@@ -1619,7 +1619,7 @@ button::-moz-focus-inner {
 		{
 		float: right;
 		padding-left: 15px;
-		background: url(../../img/lemken/bg-nav-arrow-inactive.png) 5px center
+		background: url(/images/bg-nav-arrow-inactive.png) 5px center
 			no-repeat;
 		color: #009ee0;
 		text-decoration: underline

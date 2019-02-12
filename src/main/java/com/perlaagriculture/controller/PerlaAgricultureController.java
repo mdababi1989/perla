@@ -32,4 +32,9 @@ public class PerlaAgricultureController {
 		return "services";
 	}
 
+	@GetMapping("/contact")
+	public String contact() {
+		return "contact";
+	}
+	
 }
