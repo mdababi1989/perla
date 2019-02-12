@@ -1425,8 +1425,7 @@ button::-moz-focus-inner {
 		top: 30px;
 		left: 0;
 		min-width: 100px;
-		background: #f8f8f8 url(/images/bg-nav-sub.jpg) 0 bottom
-			repeat-x;
+		background: #f8f8f8 url(/images/bg-nav-sub.jpg) 0 bottom repeat-x;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 3px;
 		text-align: left;
 		-moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 3px;
@@ -1441,7 +1440,6 @@ button::-moz-focus-inner {
 	#navAdd li.language ul li a {
 		padding-left: 10px;
 	}
-
 	#navAdd li.language:hover {
 		background: #f8f8f8;
 		box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 3px;
@@ -1457,7 +1455,6 @@ button::-moz-focus-inner {
 		z-index: 52;
 		top: 30px
 	}
-	
 	#navMain {
 		border-top: 3px solid #009ee0;
 		clear: both;
@@ -1619,8 +1616,7 @@ button::-moz-focus-inner {
 		{
 		float: right;
 		padding-left: 15px;
-		background: url(/images/bg-nav-arrow-inactive.png) 5px center
-			no-repeat;
+		background: url(/images/bg-nav-arrow-inactive.png) 5px center no-repeat;
 		color: #009ee0;
 		text-decoration: underline
 	}
