@@ -1,0 +1,20 @@
+body {
+	font: 12px/20px "Arial", Helvetica, sans-serif;
+	color: #464646;
+	background: #f8f8f8;
+	padding-bottom: 60px;
+	overflow: visible !important
+}
+
+.page {
+	width: 960px;
+	overflow: hidden;
+	padding: 10px;
+	margin: 30px auto 0 auto;
+	box-shadow: rgba(0, 0, 0, 0.10) 0px 0px 10px;
+	border: 1px solid #c6c7C8;
+	background: #fff;
+	-moz-box-shadow: rgba(0, 0, 0, 0.10) 0px 0px 10px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.10) 0px 0px 10px
+}
+

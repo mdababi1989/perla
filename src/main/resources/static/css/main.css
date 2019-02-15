@@ -333,15 +333,10 @@ textarea.input2 + .focus-input2::after {
   padding: 0 20px;
   min-width: 244px;
   height: 50px;
-
- 
-
   font-family: Poppins-Medium;
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
-  
-
 }
 
 .wrap-contact2-form-btn:hover .contact2-form-bgbtn {

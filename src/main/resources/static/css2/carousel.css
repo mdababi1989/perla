@@ -1,0 +1,10 @@
+.carousel .carousel-item {
+	transition-duration: 1s;
+	width: 100%;
+	height: 290px !important;
+}
+
+.carousel-inner {
+	width: 100%;
+	height: 290px !important;
+}

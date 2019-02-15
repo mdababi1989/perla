@@ -1,0 +1,51 @@
+.headline {
+	background: scroll 0 12px #009EE0;
+	border-bottom: 1px solid #E3E3E3;
+	border-top: 1px solid #E3E3E3;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 5px 10px;
+	text-transform: uppercase
+}
+
+.left-content h2 {
+	font-size: 20px
+}
+
+.left-content p {
+	text-align: justify;
+	padding-top: 10px;
+	padding-right: 20px;
+}
+
+.left-content {
+	padding: 20px 10px;
+	width: 700px;
+	position: relative;
+		float: left;
+	
+}
+
+.divider {
+	border-bottom: 1px solid #c6c7C8;
+	margin: 0 0 20px 0;
+	padding: 0
+}
+
+.sidebar {
+	width: 230px;
+	float: right;
+	background: #f2f2f3;
+	border: 1px solid #c6c7C8;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.sidebar iframe {
+	width: 230px;
+	height: 150px;
+	margin-bottom: 10px;
+	padding: 5px 5px 5px 5px;
+	border: 0;
+}
