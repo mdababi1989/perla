@@ -1,58 +1,12 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" type="text/css" href="/css2/main.css" />
-<link rel="stylesheet" type="text/css" href="/css2/header.css" />
-<link rel="stylesheet" type="text/css" href="/css2/carousel.css" />
-<link rel="stylesheet" type="text/css" href="/css2/content.css" />
-<link rel="stylesheet" type="text/css" href="/css2/cards-gallery.css" />
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<meta charset="utf-8">
-
+<th:block th:replace="/template/header2"></th:block>
 </head>
 <body>
 	<div class="page">
-		<header>
-			<div class="icon">
-				<a href="/accueil"></a>
-			</div>
-			<ul id="social">
-				<li class="youtube"><a href="" title="Visitez nous sur youtube">Youtube</a></li>
-				<li class="facebook"><a href="https://www.facebook.com/"
-					title="Visitez nous sur facebook">Facebook</a></li>
-			</ul>
-			<div class="search">
-				<form action="">
-					<input type="text" placeholder="CHERCHER..."> <input
-						type="submit">
-				</form>
-			</div>
-			<ul class="nav">
-				<li><a href="/aFaire" title="Connexion">Connexion</a></li>
-				<li class="language sub">Langage
-					<ul>
-						<li><a href="/aFaire">عربية<img src="/images/arabe.png"
-								width="20px" height="15px"></a></li>
-						<li><a href="/aFaire"><img src="/images/francais.jpg"
-								width="20px" height="15px">Francais</a></li>
-					</ul>
-				</li>
-			</ul>
 
-			<div id="menu">
-				<ul>
-					<li><a href="/accueil">Accueil</a></li>
-					<li><a href="/aFaire">Qui somme nous?</a></li>
-					<li><a href="/services">Nos services</a></li>
-					<li><a href="/contact">Contactez nous</a></li>
-				</ul>
-			</div>
-		</header>
+		<th:block th:replace="/template/nav2"></th:block>
 
 		<div id="carousel-spa" class="carousel slide carousel-fade"
 			data-ride="carousel" style="width: 960; height: 290; margin: auto;">
@@ -222,15 +176,14 @@
 		<div class="sidebar">
 			<h3 class="headline">Galerie des Videos</h3>
 			<iframe width="210" height="150"
-				src="https://www.youtube.com/embed/Qmla9NLFBvU" frameborder="0"
-				allowfullscreen></iframe>
+				src="https://www.youtube.com/embed/Qmla9NLFBvU"></iframe>
 			<iframe width="210" height="150"
-				src="https://www.youtube.com/embed/JPvjucZPZLM" frameborder="0"
-				allowfullscreen></iframe>
+				src="https://www.youtube.com/embed/JPvjucZPZLM"></iframe>
 			<iframe width="210" height="150"
-				src="https://www.youtube.com/embed/Qmla9NLFBvU" frameborder="0"
-				allowfullscreen></iframe>
+				src="https://www.youtube.com/embed/Qmla9NLFBvU"></iframe>
 		</div>
+
+		<th:block th:replace="/template/footer2"></th:block>
 	</div>
 </body>
 </html>

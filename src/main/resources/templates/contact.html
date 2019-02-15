@@ -2,95 +2,57 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<th:block th:replace="/template/header"></th:block>
-<link rel="stylesheet" type="text/css" href="/css/main.css" />
-
+<th:block th:replace="/template/header2"></th:block>
 </head>
-<body class="home" id="perla">
-	<div id="wrapAll">
-		<th:block th:replace="/template/nav"></th:block>
-		<div id="wrapContent" class="clearfix">
-			<img src="/images/s1.jpg" width="940px" height="290px"> <br> <br>
-			<div
-				style="width: 100%; height: 40px; text-align: center; vertical-align:middle; background-color: #009ee0;">
-				<h3 style="color: white;">Contact</h3>
-			</div>
+<body>
 
+	<div class="page">
 
-			<div class="gallery-block cards-gallery">
-				<div class="row">
-					<div class="col-sm-4" style="border-right: 1px; border: thin;">
-						<div class="card border-0">
-							<div class="card-body">
-								<hr />
-								Cité olympique Immeuble Missaoui 5ème étage <br> Kasserine
-								1200
-								<hr />
-								77 478 689
-								<hr />
-								98 723 301 <br> 93 445 747 <br> 27 027 652
-								<hr />
-								perlaagriculture@gmail.com
-								<hr />
-							</div>
+		<th:block th:replace="/template/nav2"></th:block>
+		<img src="/images/s1.jpg" width="938px" height="290px"> <br>
+		<h2>Contact</h2>
 
-						</div>
-						<div class="row-fluid">
-							<div class="span8">
-								<iframe width="100%" height="200px" frameborder="0"
-									scrolling="no" marginheight="0" marginwidth="0"
-									src="https://www.google.com/maps/embed?data=!4m12!1m6!3m5!1s0x12f915fe32a7efbb:0x15d28c992f20ff4f!2sImmeuble+Missaoui!8m2!3d35.1563923!4d8.8334728!3m4!1s0x12f915fe32a7efbb:0x15d28c992f20ff4f!8m2!3d35.1563923!4d8.8334728"></iframe>
-							</div>
-						</div>
-
-					</div>
-					<div class="col-sm-8">
-						<div class="card border-0">
-							<div class="card-body">
-								<div class="bg-contact2">
-									<div class="container-contact2">
-										<div class="wrap-contact2">
-											<form class="contact2-form validate-form">
-												<span class="contact2-form-title"> Contact Us </span>
-
-												<div class="wrap-input2 validate-input"
-													data-validate="Name is required">
-													<input class="input2" type="text" name="name"> <span
-														class="focus-input2" data-placeholder="NAME"></span>
-												</div>
-
-												<div class="wrap-input2 validate-input"
-													data-validate="Valid email is required: ex@abc.xyz">
-													<input class="input2" type="text" name="email"> <span
-														class="focus-input2" data-placeholder="EMAIL"></span>
-												</div>
-
-												<div class="wrap-input2 validate-input"
-													data-validate="Message is required">
-													<textarea class="input2" name="message"></textarea>
-													<span class="focus-input2" data-placeholder="MESSAGE"></span>
-												</div>
-
-												<div class="container-contact2-form-btn">
-													<div class="wrap-contact2-form-btn">
-														<div class="contact2-form-bgbtn"></div>
-														<button class="contact2-form-btn">Send Your
-															Message</button>
-													</div>
-												</div>
-											</form>
-										</div>
-
-									</div>
+		<div class="gallery-block cards-gallery">
+			<div class="row">
+				<div class="col-sm-4" style="border-right: 1px; border: thin;">
+					<div class="card border-0">
+						<div class="card-body">
+							<hr />
+							Cité olympique Immeuble Missaoui 5ème étage <br> Kasserine
+							1200
+							<hr />
+							77 478 689
+							<hr />
+							98 723 301 <br> 93 445 747 <br> 27 027 652
+							<hr />
+							perlaagriculture@gmail.com
+							<hr />
+							<div class="row-fluid">
+								<div class="span8">
+									<iframe width="100%" height="200px"
+										src="https://www.google.com/maps/embed?data=!4m12!1m6!3m5!1s0x12f915fe32a7efbb:0x15d28c992f20ff4f!2sImmeuble+Missaoui!8m2!3d35.1563923!4d8.8334728!3m4!1s0x12f915fe32a7efbb:0x15d28c992f20ff4f!8m2!3d35.1563923!4d8.8334728"></iframe>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<div class="col-sm-8 contact">
+					<form>
+						<fieldset>
+							<legend> Contactez nous </legend>
+							<input type="text" name="field1" placeholder="Nom *"> <input
+								type="text" name="field1" placeholder="prenom *"> <input
+								type="tel" name="field1" placeholder="Telephone *"> <input
+								type="email" name="field1" placeholder="Email *">
+							<textarea name="field3" placeholder="Message"></textarea>
+						</fieldset>
+						<input type="submit" value="Envoyer" />
+					</form>
+				</div>
 			</div>
 		</div>
-
-		<th:block th:replace="/template/footer"></th:block>
+		<th:block th:replace="/template/footer2"></th:block>
 	</div>
+	<!--end page-->
 </body>
 </html>
