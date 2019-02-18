@@ -2,20 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<th:block th:replace="/template/header2"></th:block>
+<th:block th:replace="header"></th:block>
 </head>
 <body>
 
 	<div class="page">
-		<th:block th:replace="/template/nav2"></th:block>
-		<img src="/images/s1.jpg" width="940px" height="290px">
+		<th:block th:replace="nav"></th:block>
+		<img src="images/s1.jpg" width="940px" height="290px">
 
 		<h2 class="headline">Nos services</h2>
 
 		<div class="gallery-block cards-gallery">
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="card border-0">
+					<div class="card">
 						<div class="card-body">
 							<h6>Assistance et suivi technique</h6>
 							<ul class="text-muted card-text">
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<div class="card border-0">
+					<div class="card">
 						<div class="card-body">
 							<h6>Accompagnement</h6>
 							<ul class="text-muted card-text">
@@ -93,7 +93,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<div class="card border-0">
+					<div class="card">
 						<div class="card-body">
 							<h6>Des solutions clé en main</h6>
 							<ul class="text-muted card-text">
@@ -130,7 +130,7 @@
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<div class="card border-0">
+					<div class="card">
 						<div class="card-body">
 							<h6>Autres services</h6>
 							<ul class="text-muted card-text">
@@ -173,7 +173,7 @@
 			</div>
 		</div>
 
-		<th:block th:replace="/template/footer2"></th:block>
+		<th:block th:replace="footer"></th:block>
 
 	</div>
 	<!--end page-->

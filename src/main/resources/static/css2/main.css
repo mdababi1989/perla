@@ -56,8 +56,8 @@ body {
 	margin-bottom: 30px;
 }
 
-.contact form input[type="text"]:focus, form input[type="email"]:focus, form input[type="tel"]:focus,
-	form textarea:focus {
+.contact form input[type="text"]:focus, form input[type="email"]:focus,
+	form input[type="tel"]:focus, form textarea:focus {
 	background: #d2d9dd;
 }
 
@@ -79,4 +79,26 @@ body {
 
 .contact form input[type="submit"]:hover {
 	background: #109177;
+}
+
+.material-icons {
+	font-size: 36px;
+	color: #438aab;
+	float: left;
+}
+
+.data {
+	color: #414141;
+	/*font-size: 0.875rem;*/
+	font-size: 0.8rem;
+}
+
+.contact-rich h4 {
+	/*text-transform: uppercase;
+    color: #414141;
+    margin-bottom: 2rem;*/
+	font-size: 1rem;
+	color: #2470bc;
+	font-weight: normal;
+	text-transform: uppercase;
 }

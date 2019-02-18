@@ -56,12 +56,12 @@ a.readmore {
 	margin-bottom: 10px;
 	margin-right: 5px;
 	text-decoration: underline;
-	background: url(/images/bg-nav-arrow-inactive.png) 5px center no-repeat;
+	background: url(images/bg-nav-arrow-inactive.png) 5px center no-repeat;
 }
 
 a.readmore:hover {
 	background: none;
 	text-decoration: none;
-	background: url(/images/bg-nav-arrow-active.png) 5px center no-repeat;
+	background: url(images/bg-nav-arrow-active.png) 5px center no-repeat;
 	color: #777;
 }

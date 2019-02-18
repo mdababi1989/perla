@@ -2,30 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
-<th:block th:replace="/template/header2"></th:block>
+<th:block th:replace="header"></th:block>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 </head>
 <body>
 
 	<div class="page">
 
-		<th:block th:replace="/template/nav2"></th:block>
-		<img src="/images/s1.jpg" width="938px" height="290px"> <br>
-		<h2>Contact</h2>
+		<th:block th:replace="nav"></th:block>
+		<img src="images/s1.jpg" width="938px" height="290px"> <br>
+		<h2 class="headline">Contact</h2>
 
 		<div class="gallery-block cards-gallery">
 			<div class="row">
 				<div class="col-sm-4" style="border-right: 1px; border: thin;">
 					<div class="card border-0">
 						<div class="card-body">
+							<div class="contact-rich">
+								<h4>INFORMATIONS</h4>
+							</div>
+							<i class="material-icons">place</i>
+							<div class="data">
+								Cité olympique <br> Immeuble Missaoui 5ème étage <br>
+								Kasserine 1200
+							</div>
 							<hr />
-							Cité olympique Immeuble Missaoui 5ème étage <br> Kasserine
-							1200
+							<i class="material-icons">&#xE0CD;</i>
+							<div class="data">
+								Appelez-nous :<br /> <a href="tel:+216 77 478 689">+216 77
+									478 689</a> <br />+216 98 723 301<br />+216 93 445 747<br />+216
+								27 027 652
+							</div>
 							<hr />
-							77 478 689
-							<hr />
-							98 723 301 <br> 93 445 747 <br> 27 027 652
-							<hr />
-							perlaagriculture@gmail.com
+							<i class="material-icons">&#xE158;</i>
+							<div class="data">perlaagriculture@gmail.com</div>
 							<hr />
 							<div class="row-fluid">
 								<div class="span8">
@@ -39,7 +50,9 @@
 				<div class="col-sm-8 contact">
 					<form>
 						<fieldset>
-							<legend> Contactez nous </legend>
+							<div class="contact-rich">
+								<h4>Contactez nous</h4>
+							</div>
 							<input type="text" name="field1" placeholder="Nom *"> <input
 								type="text" name="field1" placeholder="prenom *"> <input
 								type="tel" name="field1" placeholder="Telephone *"> <input
@@ -51,7 +64,7 @@
 				</div>
 			</div>
 		</div>
-		<th:block th:replace="/template/footer2"></th:block>
+		<th:block th:replace="footer"></th:block>
 	</div>
 	<!--end page-->
 </body>

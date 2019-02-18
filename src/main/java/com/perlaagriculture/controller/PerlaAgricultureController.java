@@ -12,17 +12,12 @@ public class PerlaAgricultureController {
 		return "redirect:accueil";
 	}
 	
-	@GetMapping("/accueil")
+	@GetMapping("accueil")
 	public String homePage() {
 		return "index";
 	}
 	
-	@GetMapping("/2")
-	public String homePag() {
-		return "index2";
-	}
-	
-	@GetMapping("/aFaire")
+	@GetMapping("aFaire")
 	public String aFairePag() {
 		return "afaire";
 	}
@@ -32,9 +27,14 @@ public class PerlaAgricultureController {
 		return "services";
 	}
 
-	@GetMapping("/contact")
+	@GetMapping("contact")
 	public String contact() {
 		return "contact";
+	}
+	
+	@GetMapping("apropos")
+	public String apropos() {
+		return "apropos";
 	}
 	
 }
