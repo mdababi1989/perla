@@ -1,0 +1,40 @@
+footer {
+	margin-top: 20px;
+	padding: 15px 0 10px 0;
+	font-size: 11px;
+	color: #777;
+	text-align: center; /* 	border-top: 3px solid #c6c7C8; */
+	float: left;
+	width: 100%;
+	border-top: 3px solid #c6c7C8;
+}
+
+footer ul {
+	padding-top: 4px;
+	display: inline-block;
+	padding-left: 10px
+}
+
+footer ul li {
+	list-style-type: none;
+	float: left;
+	padding: 0 12px 0 13px;
+	border-right: 1px solid #c6c7C8;
+	line-height: 11px;
+	float: left;
+}
+
+footer ul li a {
+	color: #777;
+	text-decoration: none;
+	font-size: 11px
+}
+
+footer ul li a:hover {
+	color: #009ee0
+}
+
+footer ul li.last {
+	border: none;
+	padding: 0 0 0 13px
+}

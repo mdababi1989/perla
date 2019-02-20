@@ -21,7 +21,7 @@
 
 .left-content {
 	padding: 20px 10px;
-	width: 70%;
+	width: 700px;
 	position: relative;
 	float: left;
 }
@@ -33,7 +33,7 @@
 }
 
 .sidebar {
-	width: 30%;
+	width: 230px;
 	float: right;
 	background: #f2f2f3;
 	border: 1px solid #c6c7C8;
@@ -42,9 +42,10 @@
 }
 
 .sidebar iframe {
-	width: 100%;
+	width: 230px;
+	height: 150px;
 	margin-bottom: 10px;
-	padding: 10px;
+	padding: 5px 5px 5px 5px;
 	border: 0;
 }
 
