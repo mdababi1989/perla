@@ -11,7 +11,7 @@ header {
 
 .icon a {
 	display: block;
-	background: url(images/spa.png) 0 0 no-repeat;
+	background: url(../images/spa.png) 0 0 no-repeat;
 	background-size: 100px 75px;
 	width: 100px;
 	height: 74px;
@@ -36,7 +36,7 @@ header {
 }
 
 #social {
-	padding: 15px 10px 0 0;
+	padding: 10px 15px 0 0;
 	float: right;
 	height: 20px;
 }
@@ -49,17 +49,15 @@ header {
 #social li.facebook a {
 	width: 59px;
 	height: 20px;
-	text-indent: -9999px;
 	display: block;
-	background: url(images/bg-social-facebook.jpg) 0 0 no-repeat
+	background: url(../images/bg-social-facebook.jpg) 0 0 no-repeat
 }
 
 #social li.youtube a {
 	width: 48px;
 	height: 20px;
-	text-indent: -9999px;
 	display: block;
-	background: url(images/bg-social-youtube.jpg) 0 0 no-repeat
+	background: url(../images/bg-social-youtube.jpg) 0 0 no-repeat
 }
 
 header ul, header li {
@@ -72,7 +70,7 @@ header ul, header li {
 	clear: right;
 	float: right;
 	width: 160px;
-	padding: 30px 10px 0 0
+	padding: 20px 10px 0 0
 }
 
 .search form {
@@ -82,7 +80,7 @@ header ul, header li {
 
 .search form input[type="text"] {
 	border: 1px solid #c6c7C8;
-	background: url(images/bg-input-text.jpg) 0 bottom repeat-x;
+	background: url(../images/bg-input-text.jpg) 0 bottom repeat-x;
 	line-height: 24px;
 	width: 150px;
 	font-size: 11px;
@@ -99,7 +97,7 @@ header ul, header li {
 	height: 24px;
 	line-height: 1%;
 	text-indent: -9999px;
-	background: url(images/bg-search-submit.png) 12px 7px no-repeat;
+	background: url(../images/bg-search-submit.png) 12px 7px no-repeat;
 }
 
 .nav {
@@ -139,7 +137,7 @@ header ul, header li {
 	top: 30px;
 	left: 0;
 	min-width: 100px;
-	background: #f8f8f8 url(images/bg-nav-sub.jpg) 0 bottom repeat-x;
+	background: #f8f8f8 url(../images/bg-nav-sub.jpg) 0 bottom repeat-x;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 3px;
 	text-align: left;
 	-moz-box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 3px;

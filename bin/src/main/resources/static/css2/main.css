@@ -1,3 +1,23 @@
+/* On screens that are 768px or less (smartphones) */
+.page {
+	width: 100%;
+}
+/* On screens that are larger than 768 px (small devices, tablets) */
+.page {
+	width: 90%;
+}
+
+/* On screens that are larger than 992 px (medium devices) */
+.page {
+	width: 80%;
+}
+
+/* On screens that are larger than 1200px (large devices) */
+.page {
+	width: 70%;
+	max-width: 1300px;
+}
+
 body {
 	font: 12px/20px "Arial", Helvetica, sans-serif;
 	color: #464646;
@@ -7,7 +27,6 @@ body {
 }
 
 .page {
-	width: 960px;
 	overflow: hidden;
 	padding: 10px;
 	margin: 30px auto 0 auto;
