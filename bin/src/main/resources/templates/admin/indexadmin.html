@@ -7,14 +7,10 @@
 <body id="perla">
 	<div class="page">
 		<th:block th:replace="admin/adminnav"></th:block>
+		
+		<img alt="Image" th:src="@{admin2/tt}" width="250" height="250"/>
 
-		<!-- 		<img alt="Image" th:src="@{admin2/tt}" width="250" height="250" /> <img
-			alt="Image" th:src="@{admin2/logo-adresse}" width="250" height="250" /> -->
-
-
-
-
-		<h2 th:text="${message}"></h2>
+		<h2 th:text="${message}" ></h2>
 		<div class="gallery-block cards-gallery">
 			<div class="row">
 				<div class="col-sm-8" style="border-right: 1px; border: thin;">
@@ -22,36 +18,21 @@
 						<div class="card-body">
 							<div class="contact-rich">
 								<h4>Liste des images du carousel</h4>
-								<table th:object="${carousellist}" id="userTable" border="1">
-									<tr>
-										<td>Titre</td>
-										<td>Image</td>
-										<td>Supprimer</td>
-									</tr>
-									<tr th:each="image :${carousellist}">
-										<td></td>
-										<td><img alt="Image" th:src="@{admin2/}+ ${image.path}"
-											width="100%" height="190" /></td>
-										<td th:text="${image.title}"></td>
-
-									</tr>
-								</table>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-4 contact">
 
-					<form th:action="@{/admin}" th:object="${image}" method="post"
+					<form th:action="@{/admin}" method="post"
 						enctype="multipart/form-data">
 						<fieldset>
 							<div class="contact-rich">
 								<h4>Ajouter une image</h4>
 							</div>
 							<input type="file" class="form-control-file" name="file">
-							<br> <input type="text" name="field1" placeholder="Titre"
-								th:field="*{title}">
-							<textarea placeholder="Description" th:field="*{description}"></textarea>
+							<br> <input type="text" name="field1" placeholder="Titre">
+							<textarea placeholder="Description"></textarea>
 						</fieldset>
 						<input type="submit" value="Envoyer" />
 					</form>

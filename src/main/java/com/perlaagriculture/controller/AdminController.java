@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.perlaagriculture.bean.Image;
+import com.perlaagriculture.bean.ImageType;
 import com.perlaagriculture.service.ImageService;
 
 @Controller
@@ -28,10 +28,6 @@ public class AdminController {
 	ImageService imageService;
 	@Autowired
 	ServletContext context;
-	@Autowired
-	ResourceLoader resourceLoader;
-
-	private static String UPLOADED_FOLDER = "upagr/";
 
 	@GetMapping("/admin")
 	public String rootAdmin(Model model) {
@@ -42,8 +38,7 @@ public class AdminController {
 	}
 
 	@PostMapping("/admin")
-	public String rootAdminPost(Model model, @RequestParam("file") MultipartFile file) {
-
+	public String rootAdminPost(Model model, @RequestParam("file") MultipartFile file, Image image) {
 		if (file.isEmpty()) {
 			model.addAttribute("message", "Veuillez choisir une image");
 			return "admin/indexadmin";
@@ -52,27 +47,21 @@ public class AdminController {
 			String absolutePath = context.getRealPath("/");
 			byte[] bytes = file.getBytes();
 			Path path = Paths.get(absolutePath + file.getOriginalFilename());
+			image.setPath(file.getOriginalFilename());
+			image.setImageType(ImageType.CAROUSEL);
+			imageService.createImage(image);			
 			Files.createDirectories(path.getParent());
-			Files.write(path, bytes);
-
+			Files.write(path, bytes);			
+			System.out.println(image);
 			model.addAttribute("message", "Image uploaded" + path);
 			return "admin/indexadmin";
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "admin/indexadmin";
+		System.out.println(image);
 
-	}
-
-	@GetMapping("/admin1")
-	public String rootAdminPost1(Model model) {
-
-		String absolutePath = context.getRealPath("/") + "tt.png";
-
-		model.addAttribute("path", absolutePath);
-
-		return "admin/indexadmin";
+		return "redirect:admin/indexadmin";
 
 	}
 
@@ -80,14 +69,13 @@ public class AdminController {
 	@ResponseBody
 	public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
 		System.out.println(imageName);
-		
-		String absolutePath = context.getRealPath("/") + imageName + ".png";
 
-	    File serverFile = new File(absolutePath);
+		String absolutePath = context.getRealPath("/") + imageName ;
 
-	    return Files.readAllBytes(serverFile.toPath());
-	    
-	    
+		File serverFile = new File(absolutePath);
+
+		return Files.readAllBytes(serverFile.toPath());
+
 	}
 
 }

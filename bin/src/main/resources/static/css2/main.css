@@ -1,21 +1,28 @@
 /* On screens that are 768px or less (smartphones) */
-.page {
-	width: 100%;
+@media only screen and (max-width: 768px) {
+	.page {
+		width: 100%;
+	}
 }
 /* On screens that are larger than 768 px (small devices, tablets) */
-.page {
-	width: 90%;
+@media only screen and (min-width: 768px) {
+	.page {
+		width: 90%;
+	}
 }
 
 /* On screens that are larger than 992 px (medium devices) */
-.page {
-	width: 80%;
+@media only screen and (min-width: 992px) {
+	.page {
+		width: 80%;
+	}
 }
-
 /* On screens that are larger than 1200px (large devices) */
-.page {
-	width: 70%;
-	max-width: 1300px;
+@media only screen and (min-width: 1200px) {
+	.page {
+		width: 70%;
+		max-width: 1300px;
+	}
 }
 
 body {

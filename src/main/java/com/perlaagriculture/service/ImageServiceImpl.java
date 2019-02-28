@@ -41,7 +41,6 @@ public class ImageServiceImpl implements ImageService {
 
 	@Override
 	public List<Image> listCarouselImages() {
-		@SuppressWarnings("unchecked")
 		List<Image> carouselImages= (List<Image>) imageRepository.listCarouselImages(ImageType.CAROUSEL);		
 		return carouselImages;
 	}
