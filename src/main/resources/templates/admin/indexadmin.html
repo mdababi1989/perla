@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<th:block th:replace="header"></th:block>
+<meta charset="utf-8">
+</head>
+<body id="perla">
+	<div class="page">
+		<th:block th:replace="admin/adminnav"></th:block>
+		
+		<img alt="Image" th:src="@{admin2/tt}" width="250" height="250"/>
+
+		<h2 th:text="${message}" ></h2>
+		<div class="gallery-block cards-gallery">
+			<div class="row">
+				<div class="col-sm-8" style="border-right: 1px; border: thin;">
+					<div class="card border-0">
+						<div class="card-body">
+							<div class="contact-rich">
+								<h4>Liste des images du carousel</h4>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 contact">
+
+					<form th:action="@{/admin}" method="post"
+						enctype="multipart/form-data">
+						<fieldset>
+							<div class="contact-rich">
+								<h4>Ajouter une image</h4>
+							</div>
+							<input type="file" class="form-control-file" name="file">
+							<br> <input type="text" name="field1" placeholder="Titre">
+							<textarea placeholder="Description"></textarea>
+						</fieldset>
+						<input type="submit" value="Envoyer" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<th:block th:replace="footer"></th:block>
+	</div>
+</body>
+</html>
