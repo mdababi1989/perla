@@ -9,7 +9,7 @@ public interface ImageService {
 	public void createImage(Image image);
 	public void removeImage(Image image);
 	public void updateImage(Image image);
-	public void getImageById(int id);
+	public Image getImageById(int id);
 	public List<Image> listAllImages();
 	public List<Image> listCarouselImages();
 

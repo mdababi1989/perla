@@ -1,6 +1,7 @@
 package com.perlaagriculture.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +31,10 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public void getImageById(int id) {
-		imageRepository.findById(id);
+	public Image getImageById(int id) {
+		Optional<Image> image= imageRepository.findById(id);
+		if(image.isPresent()) return image.get();
+		return null;
 	}
 
 	@Override
