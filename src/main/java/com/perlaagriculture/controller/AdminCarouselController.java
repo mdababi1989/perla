@@ -24,7 +24,7 @@ import com.perlaagriculture.bean.ImageType;
 import com.perlaagriculture.service.ImageService;
 
 @Controller
-public class AdminController {
+public class AdminCarouselController {
 	@Autowired
 	ImageService imageService;
 	@Autowired

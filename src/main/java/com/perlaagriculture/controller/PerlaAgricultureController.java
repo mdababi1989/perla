@@ -1,10 +1,16 @@
 package com.perlaagriculture.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.perlaagriculture.service.ImageService;
 
 @Controller
 public class PerlaAgricultureController {
+	@Autowired
+	ImageService imageService;
 
 	@GetMapping("/")
 	public String rootPage() {
@@ -12,7 +18,12 @@ public class PerlaAgricultureController {
 	}
 
 	@GetMapping("accueil")
-	public String homePage() {
+	public String homePage(Model model) {
+		if(imageService.listCarouselImages().size()>0)
+		model.addAttribute("carouselsize", imageService.listCarouselImages().size()-1);
+		else 
+			model.addAttribute("carouselsize", 0);
+		model.addAttribute("carousellist", imageService.listCarouselImages());
 		return "index";
 	}
 
