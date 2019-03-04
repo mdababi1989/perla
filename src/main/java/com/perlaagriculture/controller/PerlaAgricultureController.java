@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.perlaagriculture.bean.ImageType;
 import com.perlaagriculture.service.ImageService;
 
 @Controller
@@ -19,11 +20,13 @@ public class PerlaAgricultureController {
 
 	@GetMapping("accueil")
 	public String homePage(Model model) {
-		if(imageService.listCarouselImages().size()>0)
-		model.addAttribute("carouselsize", imageService.listCarouselImages().size()-1);
+		if(imageService.listTypeImages(ImageType.CAROUSEL).size()>0)
+		model.addAttribute("carouselsize", imageService.listTypeImages(ImageType.CAROUSEL).size()-1);
 		else 
 			model.addAttribute("carouselsize", 0);
-		model.addAttribute("carousellist", imageService.listCarouselImages());
+		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
+		model.addAttribute("accueillist", imageService.listTypeImages(ImageType.ACCUEIL));
+
 		return "index";
 	}
 
@@ -63,7 +66,8 @@ public class PerlaAgricultureController {
 	}
 
 	@GetMapping("apropos")
-	public String apropos() {
+	public String apropos(Model model) {
+		model.addAttribute("aproposlist", imageService.listTypeImages(ImageType.APROPOS));
 		return "apropos";
 	}
 

@@ -43,8 +43,8 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Override
-	public List<Image> listCarouselImages() {
-		List<Image> carouselImages= (List<Image>) imageRepository.listCarouselImages(ImageType.CAROUSEL);		
+	public List<Image> listTypeImages(ImageType imageType) {
+		List<Image> carouselImages= (List<Image>) imageRepository.listCarouselImages(imageType);		
 		return carouselImages;
 	}
 

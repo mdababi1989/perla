@@ -24,25 +24,25 @@ import com.perlaagriculture.bean.ImageType;
 import com.perlaagriculture.service.ImageService;
 
 @Controller
-public class AdminCarouselController {
+public class AdminAccueilController {
 	@Autowired
 	ImageService imageService;
 	@Autowired
 	ServletContext context;
 
-	@GetMapping("/admin")
+	@GetMapping("/adminaccueil")
 	public String rootAdmin(Model model) {
-		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
+		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.ACCUEIL));
 		model.addAttribute("image", new Image());
 
-		return "admin/admincarousel";
+		return "admin/adminaccueil";
 	}
 
-	@PostMapping("/admin")
+	@PostMapping("/adminaccueil")
 	public ModelAndView rootAdminPost(Model model, @RequestParam("file") MultipartFile file, Image image) {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:admin");
-		modelAndView.addObject("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
+		modelAndView.setViewName("redirect:adminaccueil");
+		modelAndView.addObject("carousellist", imageService.listTypeImages(ImageType.ACCUEIL));
 		modelAndView.addObject("image", new Image());
 
 		if (file.isEmpty()) {
@@ -52,9 +52,9 @@ public class AdminCarouselController {
 		try {
 			String absolutePath = context.getRealPath("/");
 			byte[] bytes = file.getBytes();
-			Path path = Paths.get(absolutePath + "images/carousel/"+ file.getOriginalFilename());
+			Path path = Paths.get(absolutePath + "images/accueil/"+ file.getOriginalFilename());
 			image.setPath(file.getOriginalFilename());
-			image.setImageType(ImageType.CAROUSEL);
+			image.setImageType(ImageType.ACCUEIL);
 			imageService.createImage(image);
 			Files.createDirectories(path.getParent());
 			Files.write(path, bytes);
@@ -70,12 +70,12 @@ public class AdminCarouselController {
 
 	}
 
-	@GetMapping("admin/{imageName}")
+	@GetMapping("adminaccueil/{imageName}")
 	@ResponseBody
 	public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
 		System.out.println(imageName);
 
-		String absolutePath = context.getRealPath("/") + "images/carousel/"+ imageName;
+		String absolutePath = context.getRealPath("/") + "images/accueil/"+ imageName;
 
 		File serverFile = new File(absolutePath);
 
@@ -83,23 +83,21 @@ public class AdminCarouselController {
 
 	}
 
-	@GetMapping("/admin/remove/{id}")
+	@GetMapping("/adminaccueil/remove/{id}")
 	public ModelAndView removeImage(@PathVariable(value = "id") int id) {
 		Image image = imageService.getImageById(id);
 		if(image!=null) {
-			String absolutePath = context.getRealPath("/")+ "images/carousel/"+ image.getPath();
+			String absolutePath = context.getRealPath("/")+ "images/accueil/"+ image.getPath();
 			imageService.removeImage(image);
 			File file = new File(absolutePath);
 			file.delete();
 		}
 				
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:/admin");
-		modelAndView.addObject("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
+		modelAndView.setViewName("redirect:/adminaccueil");
+		modelAndView.addObject("carousellist", imageService.listTypeImages(ImageType.ACCUEIL));
 		modelAndView.addObject("image", new Image());
-
 		return modelAndView;
-
 	}
 
 }
