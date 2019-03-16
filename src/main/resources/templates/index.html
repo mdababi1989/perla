@@ -64,17 +64,14 @@
 			<div class="gallery-block cards-gallery">
 				<div class="row">
 					<div class="col-md-6 col-lg-4" th:each="image : ${accueillist}">
-						<div class="card border-0">
-							<img alt="picture" th:src="@{adminaccueil/}+ ${image.path}"
-								class="card-img-top"  height="200px;">
-							<div class="card-body">
-								<h6>
-									<a href="#"><span th:text="${image.title}"></span></a>
-								</h6>
-								<p class="text-muted card-text"><span th:text="${image.description}"></span></p>
+						<div class="card border-0 ">
+							<div class="embed-responsive embed-responsive-16by9">
+
+								<img alt="picture" th:src="@{adminaccueil/}+ ${image.path}"
+									class="card-img-top embed-responsive-item">
 							</div>
 						</div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>

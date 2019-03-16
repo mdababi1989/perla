@@ -21,8 +21,7 @@ public class Image implements Serializable {
 	private String title;
 	private String Description;
 	private ImageType imageType;
-	
-	
+	private int principal;	
 
 	@Override
 	public String toString() {
@@ -64,5 +63,13 @@ public class Image implements Serializable {
 
 	public void setImageType(ImageType imageType) {
 		this.imageType = imageType;
+	}
+
+	public int getPrincipal() {
+		return principal;
+	}
+
+	public void setPrincipal(int principal) {
+		this.principal = principal;
 	}
 }

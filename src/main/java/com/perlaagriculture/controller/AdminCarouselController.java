@@ -32,7 +32,7 @@ public class AdminCarouselController {
 
 	@GetMapping("/admin")
 	public String rootAdmin(Model model) {
-		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
+		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.CAROUSEL,0));
 		model.addAttribute("image", new Image());
 
 		return "admin/admincarousel";
@@ -42,9 +42,7 @@ public class AdminCarouselController {
 	public ModelAndView rootAdminPost(Model model, @RequestParam("file") MultipartFile file, Image image) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:admin");
-		modelAndView.addObject("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
 		modelAndView.addObject("image", new Image());
-
 		if (file.isEmpty()) {
 			model.addAttribute("message", "Veuillez choisir une image");
 			return modelAndView;
@@ -95,7 +93,6 @@ public class AdminCarouselController {
 				
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/admin");
-		modelAndView.addObject("carousellist", imageService.listTypeImages(ImageType.CAROUSEL));
 		modelAndView.addObject("image", new Image());
 
 		return modelAndView;

@@ -103,7 +103,7 @@ body {
 	margin-bottom: 10px;
 }
 
-.contact form input[type="submit"]:hover {
+.contact form input[type="submit"]:hover{
 	background: #109177;
 }
 

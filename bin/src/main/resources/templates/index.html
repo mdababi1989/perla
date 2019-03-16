@@ -7,46 +7,36 @@
 <body id="perla">
 	<div class="page">
 		<th:block th:replace="nav"></th:block>
-
 		<div id="carousel-spa" class="carousel slide carousel-fade"
 			data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-spa" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-spa" data-slide-to="1"></li>
-				<li data-target="#carousel-spa" data-slide-to="2"></li>
-				<li data-target="#carousel-spa" data-slide-to="3"></li>
-				<li data-target="#carousel-spa" data-slide-to="4"></li>
+				<th:block th:each="i : ${#numbers.sequence( 0, carouselsize)}">
+					<li th:if="${i==0}" data-target="#carousel-spa"
+						th:attr="data-slide-to=${i}" class="active"></li>
+					<li th:unless="${i==0}" data-target="#carousel-spa"
+						th:attr="data-slide-to=${i}"></li>
+				</th:block>
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="carousel-item active">
-					<img src="images/s1.jpg" class="img-fluid"
-						alt="">
-					<div class="carousel-caption">
-						<h1>Titre de l'image</h1>
-						<p>ici on va voir la description.</p>
+				<th:block th:each="image,iter : ${carousellist}">
+					<div th:if="${iter.index==0}" class="carousel-item active">
+						<img th:src="@{admin/}+ ${image.path}" class="img-fluid" alt="">
+						<div class="carousel-caption">
+							<h1 th:text="${image.title}"></h1>
+							<p th:text="${image.description}"></p>
+						</div>
 					</div>
-				</div>
-				<div class="carousel-item">
-					<img src="images/s2.jpg" class="img-fluid"
-						alt="">
-				</div>
-				<div class="carousel-item">
-					<img src="images/s3.jpg" class="img-fluid"
-						alt="">
-				</div>
-				<div class="carousel-item">
-					<img src="images/s4.jpg" class="img-fluid"
-						alt="">
-				</div>
-				<div class="carousel-item">
-					<img src="images/s5.jpg" class="img-fluid"
-						alt="">
-				</div>
-
+					<div th:unless="${iter.index==0}" class="carousel-item">
+						<img th:src="@{admin/}+ ${image.path}" class="img-fluid" alt="">
+						<div class="carousel-caption">
+							<h1 th:text="${image.title}"></h1>
+							<p th:text="${image.description}"></p>
+						</div>
+					</div>
+				</th:block>
 			</div>
-
 			<!-- Controls -->
 			<a class="carousel-control-prev" href="#carousel-spa" role="button"
 				data-slide="prev"> <span class="carousel-control-prev-icon"
@@ -73,103 +63,18 @@
 			<h3 class="headline">Galerie des photos</h3>
 			<div class="gallery-block cards-gallery">
 				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="card border-0 transform-on-hover">
-							<a
-								href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg"
-								data-size="1600x1067"> <img alt="picture"
-								src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg"
-								class="card-img-top">
-							</a>
+					<div class="col-md-6 col-lg-4" th:each="image : ${accueillist}">
+						<div class="card border-0">
+							<img alt="picture" th:src="@{adminaccueil/}+ ${image.path}"
+								class="card-img-top"  height="200px;">
 							<div class="card-body">
 								<h6>
-									<a href="#">Titre de l'image</a>
+									<a href="#"><span th:text="${image.title}"></span></a>
 								</h6>
-								<p class="text-muted card-text">Description.</p>
+								<p class="text-muted card-text"><span th:text="${image.description}"></span></p>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="card border-0 transform-on-hover">
-							<a
-								href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg"
-								data-size="1600x1067"> <img alt="picture"
-								src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg"
-								class="card-img-top" />
-							</a>
-							<div class="card-body">
-								<h6>
-									<a href="#">Titre de l'image</a>
-								</h6>
-								<p class="text-muted card-text">Description.</p>
-							</div>
 						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="card border-0 transform-on-hover">
-							<a
-								href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(123).jpg"
-								data-size="1600x1067"> <img alt="picture"
-								src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg"
-								class="card-img-top" />
-
-							</a>
-							<div class="card-body">
-								<h6>
-									<a href="#">Titre de l'image</a>
-								</h6>
-								<p class="text-muted card-text">Description.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="card border-0 transform-on-hover">
-							<a
-								href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(118).jpg"
-								data-size="1600x1067"> <img alt="picture"
-								src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(118).jpg"
-								class="card-img-top" />
-							</a>
-							<div class="card-body">
-								<h6>
-									<a href="#">Titre de l'image</a>
-								</h6>
-								<p class="text-muted card-text">Description.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="card border-0 transform-on-hover">
-							<a
-								href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(128).jpg"
-								data-size="1600x1067"> <img alt="picture"
-								src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(128).jpg"
-								class="card-img-top" />
-							</a>
-							<div class="card-body">
-								<h6>
-									<a href="#">Titre de l'image</a>
-								</h6>
-								<p class="text-muted card-text">Description.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="card border-0 transform-on-hover">
-							<a
-								href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(132).jpg"
-								data-size="1600x1067"> <img alt="picture"
-								src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg"
-								class="card-img-top" />
-							</a>
-							<div class="card-body">
-								<h6>
-									<a href="#">Titre de l'image</a>
-								</h6>
-								<p class="text-muted card-text">Description.</p>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
