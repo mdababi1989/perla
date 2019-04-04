@@ -1,10 +1,5 @@
 package com.perlaagriculture.controller;
 
-public class LoginController{
-	
-}
-
-/*
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,4 +71,3 @@ public class LoginController {
     }
 
 }
-*/

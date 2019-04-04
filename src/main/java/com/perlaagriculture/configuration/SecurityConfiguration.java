@@ -1,12 +1,5 @@
 package com.perlaagriculture.configuration;
 
-
-public class SecurityConfiguration{
-	
-}
-
-
-/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -47,12 +40,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 				.antMatchers("/", "accueil", "assistance", "accompagnement", "cleenmain", "autreservices", "services",
-						"contact", "apropos", "login").permitAll()
-				.antMatchers( "/accueil", "/assistance", "/accompagnement", "/cleenmain", "/autreservices", "/services",
-						"/contact", "/apropos", "/login").permitAll()
-				//.antMatchers("/registration").permitAll().antMatchers("/admin/**").hasAuthority("ADMIN")
-				//.anyRequest().authenticated()
-				.and().csrf().disable().formLogin().loginPage("/login")
+						"contact", "apropos", "login")
+				.permitAll()
+				.antMatchers("/accueil", "/assistance", "/accompagnement", "/cleenmain", "/autreservices", "/services",
+						"/contact", "/apropos", "/login")
+				.permitAll().antMatchers("/registration").permitAll().antMatchers("/admin/**").hasAuthority("ADMIN")
+				.anyRequest().authenticated().and().csrf().disable().formLogin().loginPage("/login")
 				.failureUrl("/login?error=true").defaultSuccessUrl("/").usernameParameter("username")
 				.passwordParameter("password").and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 				.logoutSuccessUrl("/").and().exceptionHandling().accessDeniedPage("/access-denied");
@@ -64,4 +57,3 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 }
-*/
