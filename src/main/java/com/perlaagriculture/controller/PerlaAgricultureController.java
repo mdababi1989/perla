@@ -11,8 +11,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.perlaagriculture.bean.Contact;
 import com.perlaagriculture.bean.Image;
 import com.perlaagriculture.bean.ImageType;
 import com.perlaagriculture.service.ImageService;
@@ -26,7 +28,7 @@ public class PerlaAgricultureController {
 	public String rootPage() {
 		return "redirect:accueil";
 	}
-
+	
 	@GetMapping("accueil")
 	public String homePage(Model model) {
 		if (imageService.listTypeImages(ImageType.CAROUSEL, 0).size() > 0)
@@ -43,7 +45,7 @@ public class PerlaAgricultureController {
 	public String aFairePag() {
 		return "afaire";
 	}
-
+	
 	@GetMapping("assistance")
 	public String Assistance(Model model, @RequestParam("page") Optional<Integer> page) {
 
@@ -62,33 +64,93 @@ public class PerlaAgricultureController {
 
 		return "assistance";
 	}
-
+	
 	@GetMapping("accompagnement")
-	public String accompagnement() {
+	public String accompagnement(Model model, @RequestParam("page") Optional<Integer> page) {
+
+		int currentPage = page.orElse(1);
+		int pageSize = 9;
+
+		Page<Image> imagePage = imageService.findPaginated(PageRequest.of(currentPage - 1, pageSize), ImageType.ACCOMPAGNEMENT);
+
+		model.addAttribute("imagePage", imagePage);
+
+		int totalPages = imagePage.getTotalPages();
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+
 		return "accompagnement";
 	}
-
+	
 	@GetMapping("cleenmain")
-	public String cleenmain() {
+	public String cleenmain(Model model, @RequestParam("page") Optional<Integer> page) {
+
+		int currentPage = page.orElse(1);
+		int pageSize = 9;
+
+		Page<Image> imagePage = imageService.findPaginated(PageRequest.of(currentPage - 1, pageSize), ImageType.CLEENMAIN);
+
+		model.addAttribute("imagePage", imagePage);
+
+		int totalPages = imagePage.getTotalPages();
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+
 		return "cleenmain";
 	}
-
+	
 	@GetMapping("autreservices")
-	public String autreservices() {
+	public String autreservices(Model model, @RequestParam("page") Optional<Integer> page) {
+
+		int currentPage = page.orElse(1);
+		int pageSize = 9;
+
+		Page<Image> imagePage = imageService.findPaginated(PageRequest.of(currentPage - 1, pageSize), ImageType.AUTRESSERVICES);
+
+		model.addAttribute("imagePage", imagePage);
+
+		int totalPages = imagePage.getTotalPages();
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+
 		return "autreservices";
 	}
-
+	
 	@GetMapping("/services")
 	public String noServices(Model model) {
 		model.addAttribute("assistancelist", imageService.listTypeImages(ImageType.ASSISTANCE, 1));
+		model.addAttribute("accompagnementlist", imageService.listTypeImages(ImageType.ACCOMPAGNEMENT, 1));
+		model.addAttribute("cleenmainlist", imageService.listTypeImages(ImageType.CLEENMAIN, 1));
+		model.addAttribute("autresserviceslist", imageService.listTypeImages(ImageType.AUTRESSERVICES, 1));
+		
+		if (imageService.listTypeImages(ImageType.SERVICE, 1).size() > 0)
+			model.addAttribute("imagePrincipal", imageService.listTypeImages(ImageType.SERVICE, 1).get(0));
+		else
+			model.addAttribute("imagePrincipal", new Image());
 		return "services";
 	}
-
+	
 	@GetMapping("contact")
-	public String contact() {
+	public String contact(Model model) {
+		if (imageService.listTypeImages(ImageType.CONTACT, 1).size() > 0)
+			model.addAttribute("imagePrincipal", imageService.listTypeImages(ImageType.CONTACT, 1).get(0));
+		else
+			model.addAttribute("imagePrincipal", new Image());
+
 		return "contact";
 	}
-
+	
+	@ModelAttribute("contact")
+	public Contact newContact() {
+		return new Contact();
+	}
+	
 	@GetMapping("apropos")
 	public String apropos(Model model) {
 		model.addAttribute("aproposlist", imageService.listTypeImages(ImageType.APROPOS, 0));

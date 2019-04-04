@@ -25,56 +25,60 @@ import com.perlaagriculture.bean.ImageType;
 import com.perlaagriculture.service.ImageService;
 
 @Controller
-public class AdminAproposController {
+public class AdminAccompagnementController {
 	@Autowired
 	ImageService imageService;
 	@Autowired
 	ServletContext context;
 
-	@GetMapping("/adminapropos")
+	@GetMapping("/adminaccompagnement")
 	public String rootAdmin(Model model) {
-		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.APROPOS, 0));
-		if (imageService.listTypeImages(ImageType.APROPOS, 1).size() > 0)
-			model.addAttribute("imagePrincipal", imageService.listTypeImages(ImageType.APROPOS, 1).get(0));
+		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.ACCOMPAGNEMENT, 0));
+		if (imageService.listTypeImages(ImageType.ACCOMPAGNEMENT, 1).size() > 0)
+			model.addAttribute("imagePrincipal1", imageService.listTypeImages(ImageType.ACCOMPAGNEMENT, 1).get(0));
 		else
-			model.addAttribute("imagePrincipal", new Image());
-		return "admin/adminapropos";
+			model.addAttribute("imagePrincipal1", new Image());
+		if (imageService.listTypeImages(ImageType.ACCOMPAGNEMENT, 1).size() > 1)
+			model.addAttribute("imagePrincipal2", imageService.listTypeImages(ImageType.ACCOMPAGNEMENT, 1).get(1));
+		else
+			model.addAttribute("imagePrincipal2", new Image());
+		return "admin/adminaccompagnement";
 	}
 
-	@PostMapping("/adminapropos")
+	@PostMapping("/adminaccompagnement")
 	public ModelAndView rootAdminPost(Model model, @RequestParam("file") MultipartFile[] files,
 			RedirectAttributes attributes) throws IOException {
 		String absolutePath = context.getRealPath("/");
 		for (MultipartFile file : files) {
 			Image image = new Image();
 			byte[] bytes = file.getBytes();
-			Path path = Paths.get(absolutePath + "images/apropos/" + file.getOriginalFilename());
+			Path path = Paths.get(absolutePath + "images/accompagnement/" + file.getOriginalFilename());
 			int index = 0;
 			String filename = file.getOriginalFilename();
 			while (Files.exists(path)) {
 				index++;
 				filename = "r" + index + file.getOriginalFilename();
-				path = Paths.get(absolutePath + "images/apropos/" + filename);
+				path = Paths.get(absolutePath + "images/accompagnement/" + filename);
 			}
 
 			image.setPath(filename);
-			image.setImageType(ImageType.APROPOS);
+			image.setImageType(ImageType.ACCOMPAGNEMENT);
 			imageService.createImage(image);
 			Files.createDirectories(path.getParent());
 			Files.write(path, bytes);
 		}
 		ModelAndView modelAndView = new ModelAndView();
 		attributes.addFlashAttribute("message", "Images ajoutées avec succès");
-		modelAndView.setViewName("redirect:adminapropos");
+		modelAndView.setViewName("redirect:adminaccompagnement");
 		return modelAndView;
 	}
 
-	@GetMapping("adminapropos/{imageName}")
+	@GetMapping("adminaccompagnement/{imageName}")
 	@ResponseBody
 	public byte[] getImage(@PathVariable(value = "imageName") String imageName) throws IOException {
 		System.out.println(imageName);
 
-		String absolutePath = context.getRealPath("/") + "images/apropos/" + imageName;
+		String absolutePath = context.getRealPath("/") + "images/accompagnement/" + imageName;
 
 		File serverFile = new File(absolutePath);
 		if (serverFile.exists())
@@ -84,12 +88,12 @@ public class AdminAproposController {
 
 	}
 
-	@PostMapping("/adminapropos/update/{id}")
+	@PostMapping("/adminaccompagnement/update/{id}")
 	public ModelAndView updateImage(@PathVariable(value = "id") int id, @RequestParam("file") MultipartFile file)
 			throws IOException {
 		Image image = imageService.getImageById(id);
 		if (image != null) {
-			String absolutePath = context.getRealPath("/") + "images/apropos/" + image.getPath();
+			String absolutePath = context.getRealPath("/") + "images/accompagnement/" + image.getPath();
 			imageService.removeImage(image);
 			File file1 = new File(absolutePath);
 			file1.delete();
@@ -98,39 +102,39 @@ public class AdminAproposController {
 		String absolutePath = context.getRealPath("/");
 		image = new Image();
 		byte[] bytes = file.getBytes();
-		Path path = Paths.get(absolutePath + "images/apropos/" + file.getOriginalFilename());
+		Path path = Paths.get(absolutePath + "images/accompagnement/" + file.getOriginalFilename());
 		int index = 0;
 		String filename = file.getOriginalFilename();
 		while (Files.exists(path)) {
 			index++;
 			filename = "r" + index + file.getOriginalFilename();
-			path = Paths.get(absolutePath + "images/apropos/" + filename);
+			path = Paths.get(absolutePath + "images/accompagnement/" + filename);
 		}
 
 		image.setPath(filename);
-		image.setImageType(ImageType.APROPOS);
+		image.setImageType(ImageType.ACCOMPAGNEMENT);
 		image.setPrincipal(1);
 		imageService.createImage(image);
 		Files.createDirectories(path.getParent());
 		Files.write(path, bytes);
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:/adminapropos");
+		modelAndView.setViewName("redirect:/adminaccompagnement");
 		return modelAndView;
 	}
 
-	@GetMapping("/adminapropos/remove/{id}")
+	@GetMapping("/adminaccompagnement/remove/{id}")
 	public ModelAndView removeImage(@PathVariable(value = "id") int id) {
 		Image image = imageService.getImageById(id);
 		if (image != null) {
-			String absolutePath = context.getRealPath("/") + "images/apropos/" + image.getPath();
+			String absolutePath = context.getRealPath("/") + "images/accompagnement/" + image.getPath();
 			imageService.removeImage(image);
 			File file = new File(absolutePath);
 			file.delete();
 		}
 
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:/adminapropos");
+		modelAndView.setViewName("redirect:/adminaccompagnement");
 		return modelAndView;
 	}
 
