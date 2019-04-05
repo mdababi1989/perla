@@ -5,10 +5,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,12 +38,26 @@ public class AdminAproposController {
 	ServletContext context;
 
 	@GetMapping("/adminapropos")
-	public String rootAdmin(Model model) {
+	public String rootAdmin(Model model, @RequestParam("page") Optional<Integer> page) {
 		model.addAttribute("carousellist", imageService.listTypeImages(ImageType.APROPOS, 0));
 		if (imageService.listTypeImages(ImageType.APROPOS, 1).size() > 0)
 			model.addAttribute("imagePrincipal", imageService.listTypeImages(ImageType.APROPOS, 1).get(0));
 		else
 			model.addAttribute("imagePrincipal", new Image());
+		
+		
+		int currentPage = page.orElse(1);
+		int pageSize = 9;
+
+		Page<Image> imagePage = imageService.findPaginated(PageRequest.of(currentPage - 1, pageSize), ImageType.APROPOS);
+		model.addAttribute("imagePage", imagePage);
+		int totalPages = imagePage.getTotalPages();
+		if (totalPages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+		}
+		
+		
 		return "admin/adminapropos";
 	}
 
