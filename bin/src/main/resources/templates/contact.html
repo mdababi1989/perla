@@ -10,21 +10,22 @@
 
 	<div class="page">
 		<th:block th:replace="nav"></th:block>
-		<img src="images/s1.jpg" width="100%" height="290px">
+		<img th:src="@{adminaccueil/}+ ${imagePrincipal.path}" width="100%"
+			height="290px">
 		<h2 class="headline">Contact</h2>
 
 		<div class="gallery-block cards-gallery">
 			<div class="row">
 				<div class="col-sm-4" style="border-right: 1px; border: thin;">
 					<div class="card border-0">
-						<div class="card-body">
+						<div class="card-body" style="min-height: 100%;">
 							<div class="contact-rich">
 								<h4>INFORMATIONS</h4>
 							</div>
 							<i class="material-icons">place</i>
 							<div class="data">
-								Cité olympique <br> Immeuble Missaoui 5ème étage <br>
-								Kasserine 1200
+								Société Perla Agriculture <br> Cité olympique <br>
+								Immeuble Missaoui 5ème étage <br> Kasserine 1200
 							</div>
 							<hr />
 							<i class="material-icons">&#xE0CD;</i>
@@ -33,35 +34,38 @@
 									478 689</a> <br />+216 98 723 301<br />+216 93 445 747<br />+216
 								27 027 652
 							</div>
+
 							<hr />
 							<i class="material-icons">&#xE158;</i>
 							<div class="data">perlaagriculture@gmail.com</div>
+
 							<hr />
-							<div class="row-fluid">
-								<div class="span8">
-									<iframe width="100%" height="200px"
-										src="https://www.google.com/maps/embed?data=!4m12!1m6!3m5!1s0x12f915fe32a7efbb:0x15d28c992f20ff4f!2sImmeuble+Missaoui!8m2!3d35.1563923!4d8.8334728!3m4!1s0x12f915fe32a7efbb:0x15d28c992f20ff4f!8m2!3d35.1563923!4d8.8334728"></iframe>
-								</div>
-							</div>
+							<br> <br> <br> <br> <br> <br> <br>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-8 contact">
-					<form>
+					<form th:action="@{contact}" th:object="${contact}" method="post">
 						<fieldset>
 							<div class="contact-rich">
 								<h4>Contactez nous</h4>
 							</div>
-							<input type="text" name="field1" placeholder="Nom *"> <input
-								type="text" name="field1" placeholder="prenom *"> <input
-								type="tel" name="field1" placeholder="Telephone *"> <input
-								type="email" name="field1" placeholder="Email *">
-							<textarea name="field3" placeholder="Message"></textarea>
+							<input type="text" th:field="*{nom}" placeholder="Nom *">
+							<input type="text" th:field="*{prenom}" placeholder="Prenom *">
+							<input type="tel" th:field="*{tel}" placeholder="Telephone *">
+							<input type="email" th:field="*{email}" placeholder="Email *">
+							<textarea th:field="*{message}" placeholder="Message"></textarea>
 						</fieldset>
 						<input type="submit" value="Envoyer" />
 					</form>
 				</div>
 			</div>
+			<br>
+			<div class="z-depth-1-half map-container">
+				<iframe width="100%" height="500"
+					src="https://maps.google.com/maps?q=35.17104%2C8.805321&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+			</div>
+
 		</div>
 		<th:block th:replace="footer"></th:block>
 	</div>

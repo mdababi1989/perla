@@ -9,6 +9,10 @@ var pagenumber = [[${imagePage.number}]];
 $(function () {
     window.pagObj = $('#pagination').twbsPagination({
         totalPages: message,
+        first: "Premier",
+        prev:"Précédent",
+        next:"Suivant",
+        last: "Dernier",        
         visiblePages: 5,
         startPage: pagenumber+1,
         onPageClick: function (event, page) {
@@ -132,8 +136,6 @@ $(function () {
 			</div>
 			<nav aria-label="Page navigation example" style="float: right;">
 				<ul class="pagination pg-blue" id="pagination">
-					<li class="page-item"
-						th:classappend="${pageNumber==imagePage.number + 1} ? active"></li>
 				</ul>
 			</nav>
 		</div>

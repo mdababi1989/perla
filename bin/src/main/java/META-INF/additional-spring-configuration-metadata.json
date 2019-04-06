@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "perla.queries.users-query",
+    "type": "java.lang.String",
+    "description": "A description for 'perla.queries.users-query'"
+  },
+  {
+    "name": "perla.queries.roles-query",
+    "type": "java.lang.String",
+    "description": "A description for 'perla.queries.roles-query'"
+  }
+]}

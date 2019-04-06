@@ -28,72 +28,41 @@
 				</ul>
 			</div>
 		</div>
-		<div class="gallery-block cards-gallery">
+				<div class="gallery-block cards-gallery">
 			<div class="row">
-				<div class="col-md-6">
-					<div class="card border-0">
-						<a
-							href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg"
-							data-size="1600x1067"> <img alt="picture"
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(117).jpg"
-							class="card-img-top">
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card border-0 transform-on-hover">
-						<a
-							href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(131).jpg"
-							data-size="1600x1067"> <img alt="picture"
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(131).jpg"
-							class="card-img-top" />
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card border-0">
-						<a
-							href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(123).jpg"
-							data-size="1600x1067"> <img alt="picture"
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(123).jpg"
-							class="card-img-top" />
+				<div class="col-md-6 col-lg-4"
+					th:each="image, iStat : ${imagePage.content}">
+					<div class="card border-0 ">
+						<div class="embed-responsive embed-responsive-16by9">
 
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card border-0">
-						<a
-							href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(118).jpg"
-							data-size="1600x1067"> <img alt="picture"
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(118).jpg"
-							class="card-img-top" />
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card border-0">
-						<a
-							href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(128).jpg"
-							data-size="1600x1067"> <img alt="picture"
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(128).jpg"
-							class="card-img-top" />
-						</a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="card border-0">
-						<a
-							href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(132).jpg"
-							data-size="1600x1067"> <img alt="picture"
-							src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(132).jpg"
-							class="card-img-top" />
-						</a>
+							<img alt="picture" th:src="@{adminaccompagnement/}+ ${image.path}"
+								class="card-img-top embed-responsive-item">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<nav aria-label="Page navigation example" style="float: right;">
+			<ul class="pagination pg-blue">
+				<li class="page-item"
+					th:classappend="${imagePage.number < 1} ? disabled"><a
+					class="page-link"
+					th:href="@{/accompagnement( page=${imagePage.number})}"> Précédent
+				</a></li>
+				<li class="page-item"
+					th:classappend="${pageNumber==imagePage.number + 1} ? active"
+					th:if="${imagePage.totalPages > 0}"
+					th:each="pageNumber : ${pageNumbers}"><a class="page-link"
+					th:href="@{/accompagnement( page=${pageNumber})}" th:text=${pageNumber}></a></li>
+				<li class="page-item"
+					th:classappend="${imagePage.number+2 > imagePage.totalPages} ? disabled"><a
+					class="page-link"
+					th:href="@{/accompagnement( page=${imagePage.number}+2)}"> Suivant
+				</a></li>
+			</ul>
+		</nav>
+		
 		<th:block th:replace="footer"></th:block>
 
 	</div>

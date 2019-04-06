@@ -8,6 +8,14 @@
 	<div class="page">
 
 		<th:block th:replace="nav"></th:block>
+						<div id="menu">
+			<ul>
+				<li><a href="accueil" >Accueil</a></li>
+				<li><a href="apropos" class="active">Qui somme nous?</a></li>
+				<li><a href="services" >Nos services</a></li>
+				<li><a href="contact">Contactez nous</a></li>
+			</ul>
+		</div>
 		<a target="_blank" th:href="@{adminapropos/}+ ${imagePrincipal.path}">
 			<img th:src="@{adminapropos/}+ ${imagePrincipal.path}" width="100%"
 			height="290px">

@@ -2,11 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <th:block th:replace="header"></th:block>
+
 <meta charset="utf-8">
 </head>
 <body id="perla">
 	<div class="page">
 		<th:block th:replace="nav"></th:block>
+		<div id="menu">
+			<ul>
+				<li><a href="accueil" class="active">Accueil</a></li>
+				<li><a href="apropos">Qui somme nous?</a></li>
+				<li><a href="services">Nos services</a></li>
+				<li><a href="contact">Contactez nous</a></li>
+			</ul>
+		</div>
 		<div id="carousel-spa" class="carousel slide carousel-fade"
 			data-ride="carousel">
 			<!-- Indicators -->
@@ -22,14 +31,14 @@
 			<div class="carousel-inner" role="listbox">
 				<th:block th:each="image,iter : ${carousellist}">
 					<div th:if="${iter.index==0}" class="carousel-item active">
-						<img th:src="@{admin/}+ ${image.path}" class="img-fluid" alt="">
+						<img th:src="@{accueil/}+ ${image.path}" class="img-fluid" alt="">
 						<div class="carousel-caption">
 							<h1 th:text="${image.title}"></h1>
 							<p th:text="${image.description}"></p>
 						</div>
 					</div>
 					<div th:unless="${iter.index==0}" class="carousel-item">
-						<img th:src="@{admin/}+ ${image.path}" class="img-fluid" alt="">
+						<img th:src="@{accueil/}+ ${image.path}" class="img-fluid" alt="">
 						<div class="carousel-caption">
 							<h1 th:text="${image.title}"></h1>
 							<p th:text="${image.description}"></p>

@@ -61,8 +61,8 @@ body {
 	font-size: 1.4em;
 }
 
-.contact form input[type="text"], form input[type="email"], form input[type="tel"],
-	form textarea {
+.contact form input[type="text"], form input[type="email"], form input[type="password"],
+	form input[type="tel"], form textarea {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	background: rgba(255, 255, 255, .1);
 	border: none;
@@ -83,7 +83,8 @@ body {
 }
 
 .contact form input[type="text"]:focus, form input[type="email"]:focus,
-	form input[type="tel"]:focus, form textarea:focus {
+	form input[type="password"]:focus, form input[type="tel"]:focus, form textarea:focus
+	{
 	background: #d2d9dd;
 }
 
@@ -127,4 +128,12 @@ body {
 	color: #2470bc;
 	font-weight: normal;
 	text-transform: uppercase;
+}
+
+.profilebutton {
+    z-index: 2;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    margin: auto;
 }

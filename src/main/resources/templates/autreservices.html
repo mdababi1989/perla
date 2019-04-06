@@ -3,15 +3,44 @@
 <head>
 <meta charset="utf-8">
 <th:block th:replace="header"></th:block>
+<script th:inline="javascript">
+var message = [[${imagePage.totalPages}]];
+var pagenumber = [[${imagePage.number}]];
+$(function () {
+    window.pagObj = $('#pagination').twbsPagination({
+        totalPages: message,
+        first: "Premier",
+        prev:"Précédent",
+        next:"Suivant",
+        last: "Dernier",
+        visiblePages: 5,
+        startPage: pagenumber+1,
+        onPageClick: function (event, page) {
+            console.info(page + ' (from options)');
+        }
+    }).on('page', function (event, page) {
+        console.info(page + ' (from event listening)');
+    	location.href = "/autresservices?page="+page;
+    });
+});
+</script>
 </head>
 <body id="perla">
 
 	<div class="page">
 		<th:block th:replace="nav"></th:block>
+				<div id="menu">
+			<ul>
+				<li><a href="accueil" >Accueil</a></li>
+				<li><a href="apropos">Qui somme nous?</a></li>
+				<li><a href="services" class="active">Nos services</a></li>
+				<li><a href="contact">Contactez nous</a></li>
+			</ul>
+		</div>
 		<img src="images/s1.jpg" width="100%" height="290px">
 
 		<div class="row">
-			<div class="col-sm-4" style="border-right: 1px; border: thin;">
+			<div class="col-sm-3 border-right" >
 				<div class="vertical-menu">
 					<a href="assistance">Suivi technique</a> <a href="accompagnement">Accompagnement</a>
 					<a href="cleenmain">Clé en main </a> <a class="active"
@@ -19,7 +48,7 @@
 				</div>
 
 			</div>
-			<div class="col-sm-8" style="border-right: 1px; border: thin;">
+			<div class="col-sm-9 border-left" >
 				<h2 class="headline">Autres services</h2>
 				<ul class="text-muted card-text">
 					<li>Aide à la commercialisation des produits de la récolte</li>
@@ -32,42 +61,32 @@
 						</ul>
 					</li>
 				</ul>
-			</div>
-		</div>
-		<div class="gallery-block cards-gallery">
-			<div class="row">
-				<div class="col-md-6 col-lg-4"
-					th:each="image, iStat : ${imagePage.content}">
-					<div class="card border-0 ">
-						<div class="embed-responsive embed-responsive-16by9">
+				<br>
+				<div class="gallery-block cards-gallery">
+					<div class="row">
+						<div class="col-md-6 col-lg-4"
+							th:each="image, iStat : ${imagePage.content}">
+							<div class="card border-0 ">
+								<div class="embed-responsive embed-responsive-4by3">
 
-							<img alt="picture" th:src="@{adminautresservices/}+ ${image.path}"
-								class="card-img-top embed-responsive-item">
+									<img alt="picture"
+										th:src="@{adminautresservices/}+ ${image.path}"
+										class="card-img-top embed-responsive-item">
+								</div>
+							</div>
 						</div>
 					</div>
+				</div>
+
+				<div th:if="${imagePage.totalPages > 1}">
+					<nav aria-label="Page navigation example" style="float: right;">
+						<ul class="pagination pg-blue" id="pagination">
+						</ul>
+					</nav>
 				</div>
 			</div>
 		</div>
 
-		<nav aria-label="Page navigation example" style="float: right;">
-			<ul class="pagination pg-blue">
-				<li class="page-item"
-					th:classappend="${imagePage.number < 1} ? disabled"><a
-					class="page-link"
-					th:href="@{/autresservices( page=${imagePage.number})}"> Précédent
-				</a></li>
-				<li class="page-item"
-					th:classappend="${pageNumber==imagePage.number + 1} ? active"
-					th:if="${imagePage.totalPages > 0}"
-					th:each="pageNumber : ${pageNumbers}"><a class="page-link"
-					th:href="@{/autresservices( page=${pageNumber})}" th:text=${pageNumber}></a></li>
-				<li class="page-item"
-					th:classappend="${imagePage.number+2 > imagePage.totalPages} ? disabled"><a
-					class="page-link"
-					th:href="@{/autresservices( page=${imagePage.number}+2)}"> Suivant
-				</a></li>
-			</ul>
-		</nav>
 		<th:block th:replace="footer"></th:block>
 
 	</div>
